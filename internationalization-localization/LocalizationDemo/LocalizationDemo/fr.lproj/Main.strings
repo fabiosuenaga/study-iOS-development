@@ -1,0 +1,30 @@
+
+/* Class = "UILabel"; text = "Release Date"; ObjectID = "CX9-8e-cML"; */
+"CX9-8e-cML.text" = "Date de sortie";
+
+/* Class = "UILabel"; text = "Rating"; ObjectID = "FJd-n3-GOf"; */
+"FJd-n3-GOf.text" = "Evaluation";
+
+/* Class = "UILabel"; text = "Movie Title"; ObjectID = "NRq-Lz-Ex4"; */
+"NRq-Lz-Ex4.text" = "Titre de Film";
+
+/* Class = "UILabel"; text = "Movie Information"; ObjectID = "SBh-a4-EJR"; */
+"SBh-a4-EJR.text" = "Informations Pour Le Film";
+
+/* Class = "UILabel"; text = "Stars"; ObjectID = "bGs-Af-eL9"; */
+"bGs-Af-eL9.text" = "Stars de Cinéma";
+
+/* Class = "UIButton"; normalTitle = "Pick a Movie"; ObjectID = "dgk-XI-sgx"; */
+"dgk-XI-sgx.normalTitle" = "Choisissez un film";
+
+/* Class = "UILabel"; text = "Director"; ObjectID = "jnz-9e-ZT1"; */
+"jnz-9e-ZT1.text" = "Directeur";
+
+/* Class = "UILabel"; text = "Duration"; ObjectID = "uJE-ia-usa"; */
+"uJE-ia-usa.text" = "Durée";
+
+/* Class = "UILabel"; text = "Link"; ObjectID = "vgW-o8-2Rh"; */
+"vgW-o8-2Rh.text" = "Lien hypertexte";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "yOc-zp-Qs1"; */
+"yOc-zp-Qs1.text" = "Catégorie";
