@@ -45,6 +45,7 @@
     RAC(self.number1, textColor) =
         [validFirstElement
             map:^id(NSNumber *validValue) {
+                
                 return [validValue boolValue] ? [UIColor blackColor] : [UIColor redColor];
             }
         ];
@@ -64,38 +65,31 @@
                           }];
    
     [validCalc subscribeNext:^(NSNumber *result) {
-        self.calc.enabled = [result boolValue];
+        self.message.hidden    = YES;
+        self.message.textColor = [UIColor greenColor];
+        self.calc.enabled      = [result boolValue];
     }];
     
-//    [[[[self.calc rac_signalForControlEvents:UIControlEventTouchUpInside]
-//       doNext:^(id x) {
-//           self.calc.enabled = NO;
-//           self.message.hidden = YES;
-//       }]
-//       flattenMap:^id(id x) {
-//          return [self calcSignal];
-//       }]
-//       subscribeNext:^(NSNumber *signedIn) {
-//         self.calc.enabled = YES;
-//         BOOL success = [signedIn boolValue];
-//         self.message.hidden = success;
-//         if (success) {
-//             self.message.text = @"ok";
-//         } else {
-//             self.message.text = @"nok";
-//         }
-//       }];
+    [[self.calc rac_signalForControlEvents:UIControlEventTouchUpInside]
+     subscribeNext:^(id x) {
+           self.calc.enabled = NO;
+           self.message.hidden = NO;
+         
+           float sumResult   = [self calcOperation];
+           self.message.text = [@"A soma dos valores é: " stringByAppendingFormat:@"%.2f",sumResult];
+       }];
+
 }
 
 # pragma mark Methods
 
-// Only value between 1 and 100 is allowed!
+// Only value between 1 and 100 is allowed.
 - (BOOL)isValidFirstValue:(NSNumber *)firstNumber {
     
     return [firstNumber floatValue] > 0 && [firstNumber floatValue] <= 100;
 }
 
-// Only even values is allowed!
+// Only even values is allowed.
 - (BOOL)isValidSecondValue:(NSNumber *)number {
     int value        = 2;
     int numberCast   = [number intValue];
@@ -104,25 +98,9 @@
     return [number floatValue] > 0 && [number floatValue] <= 100 && (result == 0.0);
 }
 
-//- (void)calc:(NSNumber *)value01 sum:(NSNumber *)value02 complete:(BOOL)completeBlock {
-//    NSNumber *resultFinal = 0;
-//    if (resultFinal > 0) {
-//        BOOL success = YES;
-//        completeBlock(success);
-//    }
-//
-//}
-//
-//-(RACSignal *)calcSignal {
-//    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-//        [self calc:
-//           value01:
-//          complete:^(BOOL success) {
-//             [subscriber sendNext:@(success)];
-//             [subscriber sendCompleted];
-//         }];
-//        return nil;
-//    }];
-//}
+// Sum operation executed only if both values are valid.
+- (float)calcOperation {
+    return [self.number1.text floatValue] + [self.number2.text floatValue];
+}
 
 @end
